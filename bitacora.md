@@ -26,3 +26,72 @@
     - *Problema:* Los clientes están representados mediante códigos como "C01", "C02" y "C08", pero no existe un catálogo de clientes que permita verificar si todos los códigos corresponden a clientes registrados.
     - *Riesgo:* No es posible confirmar si los identificadores son válidos o si algún código fue ingresado incorrectamente.
     - *Decisión:* Mantener los identificadores actuales y solicitar o construir un catálogo de clientes para validar su existencia y unicidad.
+
+## Plan de indicadores en pseudocódigo
+
+### ¿Cuánto se vendió?
+
+    Definir total Como Real
+
+    total <- 0
+
+    Para Cada precio De ventas
+        Si precio > 0 Entonces
+            total += precio
+        FinSi
+    FinPara
+
+    Imprimir "El total de ventas es: $" + total
+
+### ¿Cuántas unidades salieron?
+
+    Definir totalUni Como Entero
+
+    totalUni <- 0
+
+    Para Cada cantidad De ventas
+        Si cantidad > 0 Entonces
+            totalUni += cantidad
+        FinSi
+    FinPara
+
+    Imprimir "Las cantidades vendidas fueron: " + totalUni
+
+### ¿Venta más grande?
+
+    Definir valorVenta, ventaMax Como Real
+
+    ventaMax <- 0
+    
+    Para i <- 0 Hasta (longitud de ventas - 1) Con Paso 1 Hacer
+        valorVenta <- (precio de venta en posición i) * (cantidad de venta en posición i)
+
+        Si valorVenta > ventaMax Entonces 
+            ventaMax <- valorVenta
+        FinSi
+    FinPara
+
+    Imprimir "La venta más grande fue de: $" + ventaMax
+
+### ¿Promedio por venta?
+
+    Definir promedioVentas Como Real
+
+    promedioVentas <- total / (longitud de ventas)
+
+    Imprimir "El promedio de venta es de: " + promedioVentas
+
+    Nota: total es una variable tomada del primer plan.
+
+## Pruebas
+
+### Funciones con arreglos vacíos
+
+    1. valorVenta(): Cuenta con una protección inicial en la que si el arreglo es vacío devuelve 0.
+    2. totalVendido(): Al estar la variable totalVentas inicializada en cero, la función debería devolver 0.
+    3. unidadesVendidas(): Al estar la variable totalUni inicializada en cero, la función debería devolver 0. 
+    4. ventaMayor(): Como el objetivo es devolver un elemento del arreglo, si el arreglo está vacío este devuelve null ya que no hay .
+    5. ticketPromedio(): Al no recibir los parámetros requeridos y usar operadores matemáticos para su resultado, la función debería devolver NaN.
+    6. ventasPorCiudad(): Al estar la variable totalCiudad inicializada en cero, la función dbería devolver 0.
+
+### Tabla de trazas 
