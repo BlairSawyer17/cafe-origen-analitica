@@ -3,7 +3,7 @@ const ventas = require('./datos');
 function valorVenta(venta){
     let valorTotal = 0;
 
-    valorTotal 
+    valorTotal = venta.precio * venta.cantidad;
 
     return valorTotal;
 }
@@ -76,18 +76,90 @@ function ventasPorCiudad(ventas, ciudad){
     return totalCiudad;
 }
 
-console.log(valorVenta(ventas[1]));
-console.log(totalVendido(ventas));
+/* VERSIONES CON MÉTODOS DE ARRAY */
+
+function totalVendidoM(ventas){
+    const suma = ventas.reduce((acc, venta) => {return acc + valorVenta(venta);}, 0);
+    return suma;
+}
+
+function unidadesVendidasM(ventas){
+    const sumaUni = ventas.reduce((acc,venta) => {return acc + venta.cantidad;}, 0);
+    return sumaUni;
+}
+
+function ventasPorCiudadM(ventas, ciudad){
+    
+}
+
+/* devuelve un objeto con el total vendido por cada ciudad */
+function totalPorCiudad(ventas){
+    const ventaCiudad = {};
+
+    for(const venta of ventas){
+        const ciudad = venta.ciudad.trim().toLowerCase();
+        
+        if(ventaCiudad[ciudad] === undefined){
+            ventaCiudad[ciudad] = 0;
+        }
+
+        ventaCiudad[ciudad] += valorVenta(venta);
+    }
+
+    return ventaCiudad;
+}
+
+/* Agrupe los productos y sume las unidades. */
+function unidadesPorProducto(ventas){
+    const uniProduc = {};
+
+    for(const venta of ventas){
+        if(uniProduc[venta.producto] === undefined){
+            uniProduc[venta.producto] = 0;
+        }
+
+        uniProduc[venta.producto] += venta.cantidad;
+    }
+
+    return uniProduc;
+}
+
+/* Devuelve k productos que más dinero generaron de mayor a menor */
+function topProductosPorValor(ventas, k){
+    const ventaProduct = {};
+
+    for(const venta of ventas){
+        if(ventaProduct[venta.producto] === undefined){
+            ventaProduct[venta.producto] = 0;
+        }
+
+        ventaProduct[venta.producto] += valorVenta(venta);
+    }
+
+    const ventasPorProducto = Object.entries(ventaProduct);
+
+    ventasPorProducto.sort((a, b) => b[1] - a[1]);
+
+    return ventasPorProducto.slice(0, k);
+}
+
+
+
+
+/* console.log(valorVenta(ventas[1])); */
+/* console.log(totalVendido(ventas)); */
 console.log(unidadesVendidas(ventas));
-console.log(ventaMayor(ventas));
-console.log(ticketPromedio(ventas));
-console.log(ventasPorCiudad(ventas, "Medellín"))
+/* console.log(ventaMayor(ventas)); */
+/* console.log(ticketPromedio(ventas)); */
+/* console.log(ventasPorCiudad(ventas, "Medellín")) */
 
 const prueba = []
 
-console.log(valorVenta(prueba));
-console.log(totalVendido(prueba));
-console.log(unidadesVendidas(prueba));
-console.log(ventaMayor(prueba));
-console.log(ticketPromedio(prueba));
-console.log(ventasPorCiudad(prueba, "Medellín"));
+/* console.log(valorVenta(prueba)); */
+/* console.log(totalVendido(prueba)); */
+/* console.log(unidadesVendidas(prueba)); */
+/* console.log(ventaMayor(prueba)); */
+/* console.log(ticketPromedio(prueba)); */
+/* console.log(ventasPorCiudad(prueba, "Medellín"));  */
+/* console.log(topProductosPorValor(ventas, 2)); */
+console.log(unidadesVendidasM(ventas));
