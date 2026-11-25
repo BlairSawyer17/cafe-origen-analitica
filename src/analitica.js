@@ -89,9 +89,9 @@ function unidadesVendidasM(ventas){
 }
 
 function ventasPorCiudadM(ventas, ciudad){
-    const opCiudad = ciudad
+
     const sumaCiu = ventas.reduce((acc, venta) => {
-        if(venta.ciudad.trim().toLowerCase() === opCiudad.trim().toLowerCase()){
+        if(venta.ciudad.trim().toLowerCase() === ciudad.trim().toLowerCase()){
             return acc + valorVenta(venta);
         }
 
@@ -152,6 +152,36 @@ function topProductosPorValor(ventas, k){
     return ventasPorProducto.slice(0, k);
 }
 
+function productoMasVendido(ventas){
+    const productoUnidades = {};
+
+    for(const venta of ventas){
+        if(productoUnidades[venta.producto] === undefined){
+            productoUnidades[venta.producto] = 0;
+        }
+
+        productoUnidades[venta.producto] += venta.cantidad;
+    }
+
+    const productosPorUnidades = Object.entries(productoUnidades);
+
+    productosPorUnidades.sort((a, b) => b[1] - a[1]);
+
+    return {producto: productosPorUnidades[0][0], cantidad: productosPorUnidades[0][1]};
+}
+
+function ventasDelDia(ventas, fecha){
+    const ventasDia = ventas.reduce((acc, venta) => {
+        if(venta.fecha === fecha){
+            return acc + valorVenta(venta);
+        }
+
+        return acc;
+    }, 0);
+
+    return ventasDia
+}
+
 module.exports = {
     valorVenta,
     totalVendido,
@@ -164,6 +194,8 @@ module.exports = {
     ventasPorCiudadM,
     totalPorCiudad,
     unidadesPorProducto,
-    topProductosPorValor
+    topProductosPorValor,
+    productoMasVendido,
+    ventasDelDia
 };
 
