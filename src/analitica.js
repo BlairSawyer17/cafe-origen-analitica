@@ -89,7 +89,16 @@ function unidadesVendidasM(ventas){
 }
 
 function ventasPorCiudadM(ventas, ciudad){
-    
+    const opCiudad = ciudad
+    const sumaCiu = ventas.reduce((acc, venta) => {
+        if(venta.ciudad.trim().toLowerCase() === opCiudad.trim().toLowerCase()){
+            return acc + valorVenta(venta);
+        }
+
+        return acc;
+    }, 0);
+
+    return sumaCiu;
 }
 
 /* devuelve un objeto con el total vendido por cada ciudad */
@@ -143,23 +152,18 @@ function topProductosPorValor(ventas, k){
     return ventasPorProducto.slice(0, k);
 }
 
+module.exports = {
+    valorVenta,
+    totalVendido,
+    unidadesVendidas,
+    ventaMayor,
+    ticketPromedio,
+    ventasPorCiudad,
+    totalVendidoM,
+    unidadesVendidasM,
+    ventasPorCiudadM,
+    totalPorCiudad,
+    unidadesPorProducto,
+    topProductosPorValor
+};
 
-
-
-/* console.log(valorVenta(ventas[1])); */
-/* console.log(totalVendido(ventas)); */
-console.log(unidadesVendidas(ventas));
-/* console.log(ventaMayor(ventas)); */
-/* console.log(ticketPromedio(ventas)); */
-/* console.log(ventasPorCiudad(ventas, "Medellín")) */
-
-const prueba = []
-
-/* console.log(valorVenta(prueba)); */
-/* console.log(totalVendido(prueba)); */
-/* console.log(unidadesVendidas(prueba)); */
-/* console.log(ventaMayor(prueba)); */
-/* console.log(ticketPromedio(prueba)); */
-/* console.log(ventasPorCiudad(prueba, "Medellín"));  */
-/* console.log(topProductosPorValor(ventas, 2)); */
-console.log(unidadesVendidasM(ventas));
