@@ -480,3 +480,72 @@ El resultado esperado es un reporte legible por consola
 que permite consultar los indicadores del negocio
 sin necesidad de modificar el código fuente.
 
+## Predicción de crecimiento de operaciones
+
+**Objetivo:** Antes de realizar las mediciones, predecir cómo cambiará el número de operaciones de cada función cuando el tamaño del conjunto de datos (`n`) se multiplique por 10.
+
+### 1. Predicción inicial
+
+- **Tamaño inicial del array (n):** 
+- **Tamaño del array después del incremento (10n):** 
+
+### 2. Predicción por función
+
+| Función | Predicción de visitas | Predicción de comparaciones | Justificación |
+|---|---|---|---|
+| `totalVendido` | | | |
+| `ventaMayor` | | | |
+| `totalPorCiudad` | | | |
+
+### 3. Análisis individual
+
+**A. `totalVendido`**
+
+- ¿Cuánto creo que se multiplicará el número de operaciones al multiplicar `n` por 10?
+- ¿Por qué considero que tendrá ese crecimiento?
+
+**Mi predicción:**
+
+[Escribe aquí tu respuesta]
+
+**B. `ventaMayor`**
+
+- ¿Cuánto creo que se multiplicará el número de operaciones al multiplicar `n` por 10?
+- ¿Cómo influye el hecho de que tenga condiciones y comparaciones dentro del ciclo?
+
+**Mi predicción:**
+
+[Escribe aquí tu respuesta]
+
+**C. `totalPorCiudad`**
+
+- ¿Cuánto creo que se multiplicará el número de operaciones al multiplicar `n` por 10?
+- ¿Considero que la búsqueda de ciudades y la acumulación de ventas modificarán el crecimiento?
+
+**Mi predicción:**
+
+[Escribe aquí tu respuesta]
+
+### 4. Conclusión de mi predicción
+
+Antes de ejecutar las pruebas, considero que la función con mayor crecimiento de operaciones será:
+
+[Escribe aquí tu respuesta y explica por qué]
+
+**¿Las tres funciones tendrán el mismo comportamiento al aumentar el tamaño del array?**
+
+[Escribe aquí tu reflexión]
+
+---
+
+### 5. Comparación posterior con los resultados
+
+*Completar después de realizar las mediciones.*
+
+| Función | Predicción | Resultado obtenido | ¿Mi predicción fue acertada? |
+|---|---|---|---|
+| `totalVendido` | | | |
+| `ventaMayor` | | | |
+| `totalPorCiudad` | | | |
+
+
