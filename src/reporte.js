@@ -46,7 +46,9 @@ console.table(operaciones.topProductosPorValor(ventas, 3));
 
 //RESUMEN DE UN DÍA
 
-console.log("RESUMEN POR DÍA\n");
+console.log("\nRESUMEN POR DÍA\n");
 
-console.log("")
+console.log("Las ventas del 02 de septiembre del 2026 fueron: ", operaciones.ventasDelDia(ventas, "2026-09-02").toLocaleString("es-CO", { style: "currency", currency: "COP", maximumFractionDigits: 0 }));
+
+console.log("Las ventas del 08 de septiembre del 2026 fueron: ", operaciones.ventasDelDia(ventas, "2026-09-08").toLocaleString("es-CO", { style: "currency", currency: "COP", maximumFractionDigits: 0 }))
 
