@@ -99,6 +99,47 @@ function totalPorCiudadI(ventas, contador) {
         return ventaCiudad;
 }
 
+function primeraVenta(ventas){
+    
+    if(Array.isArray(ventas) && ventas.length > 0){
+        return ventas[0];
+    }else{
+        return null;
+    }
+}
+
+function primeraVentaI(ventas, contador){
+    contador.comparador++
+    if(Array.isArray(ventas)){
+        contador.comparador++
+        if(ventas.length > 0){
+            contador.visitas++
+            return ventas[0];
+        }else{
+            return null;
+        }        
+    }else{
+        return null;
+    }
+}
+
+function clientesRecurrentes(ventas) {
+    const recurrentes = [];
+
+    for (let i = 0; i < ventas.length; i++) {
+        for (let j = i + 1; j < ventas.length; j++) {
+            if (
+                ventas[i].cliente === ventas[j].cliente &&
+                !recurrentes.includes(ventas[i].cliente)
+            ) {
+                recurrentes.push(ventas[i].cliente);
+            }
+        }
+    }
+
+    return recurrentes;
+}
+
 module.exports = {
     ciudades,
     productos,
@@ -108,5 +149,8 @@ module.exports = {
     contador,
     totalPorCiudadI,
     totalVentasI,
-    ventaMayorI
+    ventaMayorI,
+    primeraVenta,
+    primeraVentaI,
+    clientesRecurrentes
 }
