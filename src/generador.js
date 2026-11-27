@@ -39,6 +39,11 @@ function generarVentas(n) {
     return ventas;
 }
 
+const contador = {
+    visitas: 0,
+    comparador: 0
+};
+
 function totalVentasI(ventas, contador) {
 
     const suma = ventas
